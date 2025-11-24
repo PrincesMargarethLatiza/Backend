@@ -1,7 +1,9 @@
 import * as StudentController from '../controllers/StudentController.js';
 import express from "express";
+import authHandler from '../middleware/authHandler.js';
 
 const studentRoutes = express.Router();
+
 
 studentRoutes.get('/all', StudentController.fetchStudents);
 studentRoutes.post('/new', StudentController.createStudents);

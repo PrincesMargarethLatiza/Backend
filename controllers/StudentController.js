@@ -31,7 +31,7 @@ export const editStudents = async (req, res) => {
     const {name, srcode, course}= req.body;
     const {studentId} = req.params
     try{
-        const studentsId = await StudentModel.updateBook(name, srcode, course);
+        const studentsId = await StudentModel.updateStudents(name, srcode, course, studentId); 
         res.status(200).json({success: true, message: studentsId});
     }catch(e){
         console.log(e);
@@ -40,7 +40,6 @@ export const editStudents = async (req, res) => {
             message: "Internal Server Error"
         })
     }
-    
 }
    
 export const deleteStudents = async (req, res) => {

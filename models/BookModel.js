@@ -1,30 +1,30 @@
 import pool from '../config/db.js';
 
 export const getBooks = async () =>{
-    const [rows] = await pool.query("SELECT * FROM `tblbook`");
+    const[rows] = await pool.query("SELECT * FROM tblbook");
     return rows;
 }
 
-export const insertBook = async (title, genre, status ) => {
+export const insertBook = async (title, genre, status) => {
     const [result] = await pool.query(
-        "INSERT INTO tblbook (title, genre, status) VALUES (?,?,?)",
+        "INSERT INTO tblbook (title, genre, status) VALUES (?, ?, ?)",
         [title, genre, status]
     );
     return result.insertId;
-}
+};
 
-export const updateBook = async (title, genre, status,bookId) =>{
+export const updateBook = async (title, genre, status, booksId) => {
     const [result] = await pool.query(
-        "UPDATE tblbook SET title= ?, genre= ?, status= ? WHERE id= ?",
-        [title, genre, status, bookId]
+        "UPDATE tblbook SET title = ?, genre = ?, status = ? WHERE id = ?",
+        [title, genre, status, booksId]
     );
     return result.affectedRows;
-}
+};
 
-export const deleteBook = async (bookId) => {
+export const deleteBook = async (booksId) => {
     const [result] = await pool.query(
-        "DELETE FROM tblbook WHERE id= ?",
-        [bookId]
+        "DELETE FROM tblbook WHERE id = ?",
+        [booksId]
     );
     return result.affectedRows;
-}
+};
